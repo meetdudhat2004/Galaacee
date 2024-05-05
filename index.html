@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaacee Aerospace</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="space.svg">
+    <script src="js/nav.js" defer></script>
+    <!-- <script src="js/gsap.min.js" defer></script> -->
+</head>
+<body>
+    <div class="parallax">  
+        <header class="primary-header flex">
+            
+            <div class="wrapper">
+              <div class="primary-header__inner">
+                <div class="logo" > 
+                  <a href="/index1.html"><img src="GALAACEE.png" alt="logo here" class="lg"></a>
+                    
+                </div>
+                <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false"></button>
+                <nav class="flex">
+                  <ul id="primary-navigation" data-visible="false" class="primary-navigation flex">
+                    <li><a href="/index1.html">Home</a></li>
+                    <li><a href="/aboutus.html">About us</a></li>
+                    <li><a href="/booking.html">Services</a></li>
+                    <li><a href="/ourteam.html">Our Team</a></li>
+                    <li><a href="/contact.html">Contact us</a></li>
+                    <li><a href="/booking.html">Book Your Slot</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+            
+          </header>
+        <div class="hero">
+            <div class="wrapper">
+                <h1 class="hero__title">
+                    <span>Presenting you GALAACEE</span>WHERE STARS ALIGN & IDEAS TAKE FLIGHT
+                </h1>
+            </div>
+        </div>
+        <img class="parallax__bg" src="space.jpeg" alt="">
+        <img class="parallax__moon" src="moon-png-44673.png" alt="">
+        <img class="parallax__shooting_star star_1" src="comet-48528.png" alt="">
+       
+        <img class="parallax__comet" src="comet.png" alt="">
+        <img class="parallax__foreground-front" src="wave-haikei (1).svg" alt="">
+        <img class="parallax__foreground-front_1" src="black_bg.jpeg" alt="">
+        <img class="parallax__foreground-back" src="wave-haikei.svg" alt="">
+       
+    </div>
+    
+      <div class="outer">
+        <div class="slider flex">
+          <section>
+            <div class="inner flex" id="aboutus">
+              <img class="slider_uranus" src="uranus.png" alt="">
+              <div class="content" >
+                <h1>
+                  ABOUT US
+                </h1>
+                <p>
+                  At GALAACEE, we believe that the final frontier is not just for astronauts—it's for everyone. Founded by a team of visionary engineers, space enthusiasts, and educational pioneers, we are on a mission to safely and sustainably extend the human experience to the wonders of space.
+                </p>
+              </div>
+            </div>
+          </section>
+          <section>
+            <div class="inner flex">
+              <img class="slider_mercury" src="mercury.png" alt="">
+              <div class="content">
+                <h1>
+                  VISION
+                </h1>
+                <p>
+                  To open the gateway to the stars for all of humanity, making space travel as accessible as air travel, and inspiring generations to reach for the cosmos as their next adventure destination.
+                </p>
+              </div>
+            </div>
+          </section>
+          <section>
+            <div class="inner flex">
+              <img class="slider_neptune" src="neptune.png" alt="">
+              <div class="content">
+                <h1>
+                MISSION
+                </h1>
+                <p>
+                  Our mission is to safely and sustainably extend the human experience to the wonders of space, providing unparalleled adventures and comprehensive educational courses in and beyond Earth’s atmosphere, while fostering a global appreciation for our planet and the universe beyond.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+       
+    </div> 
+    
+    
+    
+     
+    
+    
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded",(event) =>{
+      const slider = document.querySelector('.slider');
+    const section = gsap.utils.toArray('.slider section');
+    
+    let tl = gsap.timeline({
+      defaults: {
+        ease: "none"
+      },
+      scrollTrigger: {
+        trigger: slider,
+        pin: true,
+        scrub:2,
+        end: () => "+=" + slider.offsetWidth
+      }
+    })
+
+tl.to(slider, {
+  xPercent: -66
+})
+
+section.forEach((stop, index) => {
+  tl
+    .from(stop.querySelector('.content'),{
+      yPercent: -50,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: stop.querySelector('.content'),
+        start: "left center",
+        end: "center center",
+        containerAnimation: tl,
+        scrub:true
+      }
+    })
+    .from(stop.querySelector('img'),{
+      xPercent: 40,
+      yPercent:-100,
+      ease: 'elastic.out(1,1)',
+      scrollTrigger:{
+        trigger:stop.querySelector('img'),
+        scrub:2,
+        containerAnimation:tl
+      }
+    })
+})
+
+const lenis = new lenis()
+function raf(time){
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+requestAnimationFrame(raf)
+    });
+    
+</script>
+</body>
+</html>
